@@ -94,7 +94,7 @@ dataD = rD.content
 dfD = pd.read_csv(BytesIO(dataD), index_col=0)
 NregD = len(dfD)
 
-st.title("WebApp GESTÃO DE INOVAÇÃO")
+st.title("GESTÃO DE INOVAÇÃO")
 # eliminar as colunas com valores ausentes
 summary = dfD.dropna(subset=['Mensagem'], axis=0)['Mensagem']
 # concatenar as palavras
