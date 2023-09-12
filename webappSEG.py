@@ -125,14 +125,9 @@ link += str(IDEIA)+'&entry.158598808=X'+'&entry.1211796870='+str(NOME)+'&entry.4
 submit = form.form_submit_button('✔️ ENVIAR')
 if submit:
     r = http.request('GET', link)
-    # st.info(r.status)        
-    # resp = GPT3(IDEIA)    
-    # confirmaENVIO = mailSEND(MAIL, NOME + "(" + str(t) + "): " + IDEIA, resp)
     confirmaENVIO = mailSEND(MAIL, NOME + "(" + str(t) + "): " + IDEIA)
     if confirmaENVIO=="OK":
         st.success("Envio confirmado!")
     Graph(wordcloud, wordfreq,wordlist)
-    #st.success("A seguir, um conteúdo de pesquisa realizada com sua ideia no ChatGPT3. Isto talvez possa lhe ajudar no desenvolvimento de sua ideia! " + resp)
-
-
+   
 st.info("Desenvolvido por: Equipe FabLab / Prof. Massaki de O. Igarashi")
