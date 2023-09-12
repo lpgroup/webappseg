@@ -67,7 +67,7 @@ def mailSEND(CC, ASSUNTO, Mensagem):
         return "OK"
 
 def GPT3(assuntoBUSCA):
-    openai.api_key = "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"
+    openai.api_key = "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"
     MODEL = "gpt-3.5-turbo"
     CONTENT = "Pesquise inovações relacionadas a " + assuntoBUSCA
     response = openai.ChatCompletion.create(model=MODEL, messages=[{"role": "user", "content": CONTENT}])
