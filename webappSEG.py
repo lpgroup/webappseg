@@ -128,7 +128,7 @@ if submit:
     #st.info(r.status)        
     #resp = GPT3(IDEIA)    
     #confirmaENVIO = mailSEND(MAIL, NOME + "(" + str(t) + "): " + IDEIA, resp)
-     confirmaENVIO = mailSEND(MAIL, NOME + "(" + str(t) + "): " + IDEIA)
+    confirmaENVIO = mailSEND(MAIL, NOME + "(" + str(t) + "): " + IDEIA)
     if confirmaENVIO=="OK":
         st.success("Envio confirmado!")
     Graph(wordcloud, wordfreq,wordlist)
