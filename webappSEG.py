@@ -59,7 +59,8 @@ def mailSEND(CC, ASSUNTO):
         #Obrigado pela atenção,
         #Prof. Massaki
         #'''
-        body = "Obrigado por contribuir com sua ideia. A seguir Conteúdo relacionado pesquisado no ChatGPT3: " + Mensagem
+        #body = "Obrigado por contribuir com sua ideia. A seguir Conteúdo relacionado pesquisado no ChatGPT3: " + Mensagem
+        body = "Obrigado por contribuir com sua ideia."        
         message.set_content(body)
 
         ### Send Message
