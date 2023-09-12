@@ -19,7 +19,7 @@ import json
 import smtplib
 import time
 import email
-import openai
+#import openai
 
 from datetime import datetime
 from datetime import date
@@ -66,12 +66,12 @@ def mailSEND(CC, ASSUNTO, Mensagem):
         #print("List of Failed Recipients : {}".format(response))
         return "OK"
 
-def GPT3(assuntoBUSCA):
-    openai.api_key = "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"
-    MODEL = "gpt-3.5-turbo"
-    CONTENT = "Pesquise inovações relacionadas a " + assuntoBUSCA
-    response = openai.ChatCompletion.create(model=MODEL, messages=[{"role": "user", "content": CONTENT}])
-    return response.choices[0].message.content
+#def GPT3(assuntoBUSCA):
+    #openai.api_key = "....."
+    #MODEL = "gpt-3.5-turbo"
+    #CONTENT = "Pesquise inovações relacionadas a " + assuntoBUSCA
+    #response = openai.ChatCompletion.create(model=MODEL, messages=[{"role": "user", "content": CONTENT}])
+    #return response.choices[0].message.content
 
 def Graph(wordcloud, wordfreq,wordlist):
     plt.imshow(wordcloud);
