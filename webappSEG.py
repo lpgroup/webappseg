@@ -15,7 +15,7 @@ import urllib3
 from urllib3 import request
 # json data
 import json
-#SMTP
+
 import smtplib
 import time
 import email
@@ -28,7 +28,8 @@ datetime_br= datetime.now(pytz.timezone('America/Sao_Paulo'))
 #t = datetime_br.strftime('%d:%m:%Y %H:%M:%S')
 t = datetime_br.strftime('%d:%m:%Y %H:%M')
 
-def mailSEND(CC, ASSUNTO, Mensagem):
+#def mailSEND(CC, ASSUNTO, Mensagem):
+def mailSEND(CC, ASSUNTO):
     ################# SMTP SSL ################################
     with smtplib.SMTP_SSL(host="smtp.gmail.com", port=465) as smtp_ssl:
         # print("Connection Object : {}".format(smtp_ssl))
