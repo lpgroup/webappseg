@@ -1,0 +1,16 @@
+streamlit
+pandas
+plotly
+altair 
+numpy
+matplotlib
+requests
+wordcloud
+#datetime
+#json
+#smtplib
+#time
+#email
+openai
+pytz
+#urllib3
