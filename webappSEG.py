@@ -67,19 +67,33 @@ def mailSEND(CC, ASSUNTO, Mensagem):
         return "OK"
 
 def GPT3(assuntoBUSCA):
-    openai.api_key = "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"
+    openai.api_key = "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"
     MODEL = "gpt-3.5-turbo"
     CONTENT = "Pesquise inovações relacionadas a " + assuntoBUSCA
     response = openai.ChatCompletion.create(model=MODEL, messages=[{"role": "user", "content": CONTENT}])
     return response.choices[0].message.content
 
+def Graph(wordcloud, wordfreq,wordlist):
+    plt.imshow(wordcloud);
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
+    #st.pyplot()
+    wordcloud.to_file("Nuvem_de_Palavras_Ideacao.png")
+
+    st.header("Nuvem de Palavras das IDEIAS:")
+    st.pyplot() #Este método faz exibirt a nuvem de palavras
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    chart_data = pd.DataFrame(wordfreq,wordlist)
+    st.bar_chart(chart_data)
+    
 http = urllib3.PoolManager()
 rD = requests.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vRUgDjGeiyn2AXcZKsB5v8YzJE3iL7AWboi4L_Zrn9heRi1PKAGVhSaG4-OapTNduwOLc6XxDw0KKrB/pub?gid=689726290&single=true&output=csv')
 dataD = rD.content
 dfD = pd.read_csv(BytesIO(dataD), index_col=0)
 NregD = len(dfD)
 
-st.title("Painel - IDEAÇÃO")
+st.title("Webapp GESTÃO DE INOVAÇÃO")
 # eliminar as colunas com valores ausentes
 summary = dfD.dropna(subset=['Mensagem'], axis=0)['Mensagem']
 # concatenar as palavras
@@ -112,24 +126,12 @@ submit = form.form_submit_button('✔️ ENVIAR')
 if submit:
     r = http.request('GET', link)
     #st.info(r.status)        
-    resp = GPT3(IDEIA)
-    st.write(resp)
+    resp = GPT3(IDEIA)    
     confirmaENVIO = mailSEND(MAIL, NOME + "(" + str(t) + "): " + IDEIA, resp)
     if confirmaENVIO=="OK":
         st.success("Envio confirmado!")
+    Graph(wordcloud, wordfreq,wordlist)
+    st.success("A seguir, um conteúdo de pesquisa realizada com sua ideia no ChatGPT3. Isto talvez possa lhe ajudar no desenvolvimento de sua ideia! " + resp)
 
-plt.imshow(wordcloud);
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-#st.pyplot()
-wordcloud.to_file("Nuvem_de_Palavras_Ideacao.png")
-
-st.header("Nuvem de Palavras das IDEIAS:")
-st.pyplot() #Este método faz exibirt a nuvem de palavras
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
-chart_data = pd.DataFrame(wordfreq,wordlist)
-st.bar_chart(chart_data)
 
 st.info("Desenvolvido por: Equipe FabLab / Prof. Massaki de O. Igarashi")
